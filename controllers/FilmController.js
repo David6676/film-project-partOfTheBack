@@ -55,7 +55,6 @@ class FilmController {
 
     static getFilm = async (req, res) => {
         let film = await Film.findAll({ include: { all: true, nested: true } })
-        // console.log(film);
         res.send({ film })
     }
 
@@ -90,31 +89,6 @@ class FilmController {
         })
         res.send({ film });
     }
-
-    // static genreSearch = async (req, res) => {
-    // let { id } = req.params
-    // let genId = await MovieGenre.findAll({
-    //     where: {
-    //         genreId: id
-    //     }, include: { all: true, nested: true }
-    // })
-
-    // let [film] = await connect.query(`
-    // SELECT * FROM film
-    // JOIN moviegenre ON moviegenre.filmId = film.id
-    // JOIN genre ON genre.id = moviegenre.genreId
-    // WHERE moviegenre.genreId = ${id}
-    // `)
-
-    // console.log(film, "ssss");
-    // res.send({ film });
-
-    // let film = await Film.findAll({
-    //     where: {
-    //         id: genId.filmId
-    //     }, include: { all: true, nested: true }
-    // })
-    // }
 
     static delFilm = async (req, res) => {
         let { id } = req.params;
